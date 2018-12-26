@@ -2,6 +2,7 @@ package com.thoughtmechanix.authentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -29,6 +30,10 @@ public class Application {
         return userInfo;
     }
 
+    @RequestMapping(value = { "/user2" }, produces = "application/json")
+    public Object user2(UsernamePasswordAuthenticationToken user) {
+        return user;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
